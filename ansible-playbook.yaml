@@ -9,5 +9,5 @@
       command: docker build -t spring-boot:1.0-SNAPSHOT /home/ec2-user/docker/
 
     - name: Run Docker container
-      command: docker run -d -p 8888:8080 spring-boot:1.0-SNAPSNAP
+      command: docker run -d -p 8888:8080 spring-boot:1.0-SNAPSHOT
 
