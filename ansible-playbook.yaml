@@ -1,0 +1,26 @@
+--- #ansible playbook to run dockerfile
+
+- hosts: server
+  username: ansible
+  become: yes
+  connection: ssh
+  gather_facts: yes
+
+- tasks:
+       -name: Build Dockerfile
+       docker_image:
+       name: spring-boot:1.0-SNAPSHOT
+       build:
+         path: '/home/ec2-user/docker'
+         pull: false
+         source: build
+
+        -name: Run Docker container using image spring-boot:1.0-SNAPSHOT
+        docker-cointainer:
+          name: spring-boot-container
+          image: "spring-boot:1.0-SNAPSHOT"
+          started: started
+          recreate: yes
+          detach: true
+          ports:
+            -"8085:8080"
